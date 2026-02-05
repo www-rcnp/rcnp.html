@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meus Links</title>
+
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #000;
+    }
+
+    /* ===================== */
+    /* MOBILE (PADRÃO)       */
+    /* ===================== */
+
+    .page {
+      min-height: 100vh;
+      background: url("03.png") no-repeat center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    .content {
+      position: absolute;
+      bottom: 160px;
+      left: 0;
+      right: 0;
+      padding: 0 24px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      padding: 04px 07px;
+      margin: 9px auto;
+      max-width: 400px;
+      background: rgba(239, 204, 32, 0.75);
+      border-radius: 12px;
+      color: #000;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    .btn .icon {
+      width: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 14px;
+      flex-shrink: 0;
+    }
+
+    .btn .icon img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .btn .label {
+      flex: 1;
+      text-align: left;
+    }
+
+    /* ===================== */
+    /* MODAL + ANIMAÇÃO      */
+    /* ===================== */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 16px;
+      transform: scale(0.85);
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 30px rgba(255,255,255,0.15);
+    }
+
+    .modal.active img {
+      transform: scale(1);
+    }
+
+    .modal span {
+      position: absolute;
+      bottom: 40px;
+      color: #fff;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* ===================== */
+    /* DESKTOP               */
+    /* ===================== */
+
+    @media (min-width: 768px) {
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .page {
+        width: 360px;
+        height: 640px;
+        min-height: auto;
+        border-radius: 22px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.6);
+        overflow: hidden;
+      }
+
+      .content {
+        bottom: 138px;
+      }
+
+      .modal img {
+        max-width: 360px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+    <div class="content">
+
+      <a class="btn" href="https://wa.me/5562983134756" target="_blank">
+        <span class="icon"><img src="i1.png"></span>
+        <span class="label">WhatsApp</span>
+      </a>
+
+      <a class="btn" href="https://www.instagram.com/rcnpaz" target="_blank">
+        <span class="icon"><img src="i4.png"></span>
+        <span class="label">Instagram</span>
+      </a>
+
+      <a class="btn" href="https://www.tiktok.com/@legendcutss" target="_blank">
+        <span class="icon"><img src="i2.png"></span>
+        <span class="label">TikTok</span>
+      </a>
+
+      <a class="btn" href="https://www.linkedin.com/in/rafael-cinalli-n-paz" target="_blank">
+        <span class="icon"><img src="i3.png"></span>
+        <span class="label">LinkedIn</span>
+      </a>
+
+      <!-- BOTÃO QUE ABRE O QR CODE -->
+      <div class="btn" onclick="abrirQR()">
+        <span class="icon"><img src="i6.png"></span>
+        <span class="label">Abrir QR Code</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== -->
+  <!-- MODAL DO QR CODE      -->
+  <!-- ===================== -->
+  <div class="modal" id="modalQR" onclick="fecharQR()">
+
+    <!-- 🔴 TROQUE AQUI A IMAGEM DO QR CODE -->
+    <img src="Q01.png" alt="QR Code">
+
+    <span>Toque ou clique para fechar</span>
+  </div>
+
+  <script>
+    function abrirQR() {
+      document.getElementById("modalQR").classList.add("active");
+    }
+
+    function fecharQR() {
+      document.getElementById("modalQR").classList.remove("active");
+    }
+  </script>
+
+</body>
+</html>
